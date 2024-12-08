@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafikler - Kocaeli Lojistik</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Kocaeli Lojistik</a>
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-item nav-link">Anasayfa</a>
+                <a href="chart.html" class="nav-item nav-link active">Grafikler</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <h1 class="text-center">Kocaeli Lojistik İstatistikleri</h1>
+        <p class="text-center">2024 yılı taşımacılık ve sipariş dağılımı.</p>
+
+        <canvas id="myChart" style="max-width: 1000px; height: 500px; margin: auto;"></canvas>
+    </div>
+
+
+    <script>
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+
+        const data = {
+            labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran'],
+            datasets: [{
+                label: 'Taşınan Siparişler',
+                data: [120, 190, 300, 250, 420, 310],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Tamamlanan Teslimatlar',
+                data: [100, 170, 280, 240, 400, 290],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+        const options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Taşıma ve Teslimat Performansı'
+                }
+            }
+        };
+
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+
+</html>
